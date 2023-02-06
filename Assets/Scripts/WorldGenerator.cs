@@ -35,12 +35,17 @@ public class WorldGenerator : MonoBehaviour
 
     private Queue<GameObject> pool;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         grid = new List<GameObject>();
 
         BuildPool();
+       
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         Generate();
     }
 
@@ -55,7 +60,7 @@ public class WorldGenerator : MonoBehaviour
     private void BuildPool()
     {
         pool = new Queue<GameObject>();
-        for (int i = 0; i < 80000; i++)
+        for (int i = 0; i < 30000; i++)
         {
             CreateTile();
         }
@@ -88,10 +93,10 @@ public class WorldGenerator : MonoBehaviour
     private void Generate()
     {
         Initialize();
-        Regenerate();
-        Invoke("RemoveInternTile", 0.1f);
-        Invoke("CombineMeshes", 0.2f);
-        Invoke("ResetMap", 0.3f);
+        ResetMap();
+        Invoke("Regenerate", 0.3f);
+        Invoke("RemoveInternalTiles", 0.4f);
+        Invoke("CombineMeshes", 0.6f);
         PositionPlayer();
     }
 
