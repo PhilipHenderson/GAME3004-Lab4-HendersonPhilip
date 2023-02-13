@@ -60,7 +60,7 @@ public class WorldGenerator : MonoBehaviour
     private void BuildPool()
     {
         pool = new Queue<GameObject>();
-        for (int i = 0; i < 30000; i++)
+        for (int i = 0; i < 40000; i++)
         {
             CreateTile();
         }
